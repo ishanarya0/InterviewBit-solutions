@@ -12,14 +12,14 @@ int Solution::findMedian(vector<vector<int> > &A) {
             max = A[i][c-1];
     }
     
-    int desired = (r*c + 1)/2;
+    int noOfElementsLessThanMedian = (r*c + 1)/2;
     while(min < max){
         int mid = min + (max - min)/2;
         int place = 0;
         
         for(int i=0; i < r; i++)
             place += upper_bound(A[i].begin(), A[i].end(), mid) - A[i].begin();
-        if(place < desired)
+        if(place < noOfElementsLessThanMedian)
             min = mid + 1;
         else
             max = mid;
